@@ -71,7 +71,23 @@ namespace Catalog.Controllers
 
       Item updatedItem = existingItem with { Name = itemdto.Name, Price = itemdto.Price };
 
-      repository.UpdateItem(id, updatedItem);
+      repository.UpdateItem(updatedItem);
+
+      return NoContent();
+    }
+
+    // DELETE /items/{id}
+    [HttpDelete("{id}")]
+    public ActionResult DeleteItem(Guid id)
+    {
+      var existingItem = repository.GetItem(id);
+
+      if (existingItem is null)
+      {
+        return NotFound();
+      }
+
+      repository.DeleteItem(id);
 
       return NoContent();
     }
