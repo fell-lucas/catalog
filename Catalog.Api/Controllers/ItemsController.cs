@@ -68,7 +68,7 @@ namespace Catalog.Api.Controllers
 
     // PUT /items/{id}
     [HttpPut("{id}")]
-    public async Task<ActionResult> UpdateItem(Guid id, UpdateItemDto itemdto)
+    public async Task<ActionResult> UpdateItemAsync(Guid id, UpdateItemDto itemdto)
     {
       var existingItem = await repository.GetItemAsync(id);
 
@@ -86,7 +86,7 @@ namespace Catalog.Api.Controllers
 
     // DELETE /items/{id}
     [HttpDelete("{id}")]
-    public async Task<ActionResult> DeleteItem(Guid id)
+    public async Task<ActionResult> DeleteItemAsync(Guid id)
     {
       var existingItem = await repository.GetItemAsync(id);
 
